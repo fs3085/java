@@ -1,4 +1,4 @@
-package Test;
+package Test.exer;
 
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -15,10 +15,10 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author shkstart
  * @create 2019-02-15 下午 3:54
  */
-class Account {
+class AccountLock {
     private double balance;
 
-    public Account(double balance) {
+    public AccountLock(double balance) {
         this.balance = balance;
     }
 
@@ -38,12 +38,12 @@ class Account {
     }
 }
 
-class Customer extends Thread {
+class CustomerLock extends Thread {
 
     private Account acct;
     private static final ReentrantLock lock = new ReentrantLock();
 
-    public Customer(Account acct) {
+    public CustomerLock(Account acct) {
         this.acct = acct;
     }
 
@@ -61,7 +61,7 @@ class Customer extends Thread {
 }
 
 
-public class AccountTest {
+public class AccountTestLock {
 
     public static void main(String[] args) {
         Account acct = new Account(0);
