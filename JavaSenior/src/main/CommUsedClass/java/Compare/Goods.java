@@ -1,3 +1,5 @@
+package Compare;
+
 /**
  * 商品类
  */
@@ -32,7 +34,7 @@ public class Goods implements  Comparable{
 
     @Override
     public String toString() {
-        return "Goods{" +
+        return "Compare.Goods{" +
                 "name='" + name + '\'' +
                 ", price=" + price +
                 '}';
