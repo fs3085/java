@@ -40,10 +40,10 @@ class AccountLock {
 
 class CustomerLock extends Thread {
 
-    private Account acct;
+    private AccountLock acct;
     private static final ReentrantLock lock = new ReentrantLock();
 
-    public CustomerLock(Account acct) {
+    public CustomerLock(AccountLock acct) {
         this.acct = acct;
     }
 
@@ -51,7 +51,7 @@ class CustomerLock extends Thread {
     public void run() {
         try {
             lock.lock();
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 10; i++) {
                 acct.deposit(1000);
             }
         } finally {
@@ -64,9 +64,9 @@ class CustomerLock extends Thread {
 public class AccountTestLock {
 
     public static void main(String[] args) {
-        Account acct = new Account(0);
-        Customer c1 = new Customer(acct);
-        Customer c2 = new Customer(acct);
+        AccountLock acct = new AccountLock(0);
+        CustomerLock c1 = new CustomerLock(acct);
+        CustomerLock c2 = new CustomerLock(acct);
 
         c1.setName("甲");
         c2.setName("乙");
